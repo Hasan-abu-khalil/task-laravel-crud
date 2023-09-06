@@ -24,6 +24,12 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ route('cards.index') }}">Dashboard <span class="sr-only">(current)</span></a>
                 </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ route('cards.show',['card']) }}">ALL cards</a>
+                </li>
+                
+               
                 
             </ul>
         </div>

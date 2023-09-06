@@ -42,12 +42,12 @@ class CardsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show()
     {
-        $card = Cards::findOrFail($id);
-        return view('cards.show', ['card' => $card]);
+        $cards = Cards::all();
+        return view('cards.show', ['cards' => $cards ]);
 
-        
+
     }
 
     /**
@@ -55,7 +55,9 @@ class CardsController extends Controller
      */
     public function edit($id)
     {
-        $card = Cards::findOrFail($id);
+        $card = Cards::find($id);
+        // $card = Cards::all($id);
+
         return view('cards.edit', ['card' => $card]);
     }
 
@@ -70,7 +72,9 @@ class CardsController extends Controller
             'price' => 'required',
         ]);
 
-        $card = Cards::findOrFail($id);
+
+
+        $card = Cards::find($id);
         $card->update($request->all());
         return redirect()->route('cards.index');
     }
@@ -80,7 +84,7 @@ class CardsController extends Controller
      */
     public function destroy($id)
     {
-        $card = Cards::findOrFail($id);
+        $card = Cards::find($id);
         $card->delete();
         return redirect()->route('cards.index');
     }
@@ -138,7 +142,7 @@ class CardsController extends Controller
 //      */
 //     public function show(Cards $cards)
 //     {
-        
+
 //         return view('cards.show', ['cards' => $cards]);
 //     }
 
@@ -155,7 +159,7 @@ class CardsController extends Controller
 //      */
 //     public function update(Request $request, Cards $cards)
 //     {
-        
+
 //         $request->validate([
 //             'name' =>'required',
 //             'description' =>'required',
@@ -176,5 +180,3 @@ class CardsController extends Controller
 
 //     }
 // }
-
-
